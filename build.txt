@@ -1,3 +1,4 @@
+eventlet
 flask
 psutil
 flask_socketio
