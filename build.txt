@@ -2,3 +2,4 @@ flask
 psutil
 flask_socketio
 gunicorn
+eventlet
