@@ -1,4 +1,4 @@
 flask
 psutil
-socketIO
+flask_socketio
 gunicorn
