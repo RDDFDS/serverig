@@ -27,11 +27,11 @@
 <body>
     <div class="container">
         <div>
-            <h2>Informações do Cliente</h2>
-            <p><strong>IP:</strong> {{ client_ip }}</p>
-        </div>
-        <div>
-            <h2>Informações do Servidor</h2>
+            <h2>Client Info.</h2>
+            {% for key, value in client_info.items() %}
+                <p><strong>{{ key }}:</strong> {{ value }}</p>
+            {% endfor %}
+            <h2>Server Info.</h2>
             {% for key, value in server_info.items() %}
                 <p><strong>{{ key }}:</strong> {{ value }}</p>
             {% endfor %}
