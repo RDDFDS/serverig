@@ -9,7 +9,7 @@ def get_system_info():
         "OS": platform.system(),
         "OS version": platform.version(),
         "Arq.": platform.architecture()[0],
-        "Processor": "Intel® Core™ i9 14900KS -- 6.20 GHz -- Limited by Host"
+        "Processor": "Intel® Core™ i9 14900KS -- 6.20 GHz -- Limited by Host",
         "CPU Cores": psutil.cpu_count(logical=False),
         "Threads": psutil.cpu_count(logical=True),
         "Total Mem.": f"{round(psutil.virtual_memory().total / (1024 ** 3), 2)} GB",
