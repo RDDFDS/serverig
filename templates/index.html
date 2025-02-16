@@ -1,66 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chat with SocketIO</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.min.js"></script>
+    <title>Informações do Sistema</title>
     <style>
         body {
+            background-color: black;
+            color: white;
             font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .container {
             display: flex;
             flex-direction: column;
-            align-items: center;
-            margin-top: 50px;
-            background-color: #f0f0f0;
+            gap: 20px;
         }
-        #chat-box {
-            width: 400px;
-            height: 300px;
-            border: 1px solid #ddd;
-            padding: 10px;
-            overflow-y: auto;
-            background-color: white;
-            margin-bottom: 20px;
-        }
-        #message-input {
-            width: 300px;
-            padding: 5px;
-            margin-right: 10px;
-        }
-        #send-button {
-            padding: 5px 10px;
+        @media (min-width: 768px) {
+            .container {
+                flex-direction: row;
+                justify-content: space-between;
+            }
         }
     </style>
 </head>
 <body>
-
-    <h1>Real-time Chat</h1>
-    <div id="chat-box"></div>
-    <input type="text" id="message-input" placeholder="Type a message">
-    <button id="send-button">Send</button>
-
-    <script>
-        const socket = io.connect('http://localhost:5000'); // Conecta ao servidor Flask
-
-        // Enviar mensagem
-        document.getElementById('send-button').addEventListener('click', function() {
-            const message = document.getElementById('message-input').value;
-            if (message) {
-                socket.send(message); // Envia mensagem para o servidor
-                document.getElementById('message-input').value = ''; // Limpa o campo de entrada
-            }
-        });
-
-        // Receber mensagens do servidor e mostrar no chat
-        socket.on('broadcast', function(data) {
-            const chatBox = document.getElementById('chat-box');
-            const newMessage = document.createElement('p');
-            newMessage.textContent = data;
-            chatBox.appendChild(newMessage);
-            chatBox.scrollTop = chatBox.scrollHeight; // Scroll para a última mensagem
-        });
-    </script>
-
+    <div class="container">
+        <div>
+            <h2>Informações do Cliente</h2>
+            <p><strong>IP:</strong> {{ client_ip }}</p>
+        </div>
+        <div>
+            <h2>Informações do Servidor</h2>
+            {% for key, value in server_info.items() %}
+                <p><strong>{{ key }}:</strong> {{ value }}</p>
+            {% endfor %}
+        </div>
+    </div>
 </body>
 </html>
